@@ -10,17 +10,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
+export interface UserOptions {
+  username: string,
+  password: string
+}
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
+  login: UserOptions = { username: '', password: '' };
+  submitted = false; 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-
+  onLogin(form: NgForm) {
+  	this.submitted = true;
+  	if(form.valid) {
+  		console.log("Login Code ...");
+  	}
+  }
 }
