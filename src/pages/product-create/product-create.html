@@ -1,0 +1,141 @@
+<!--
+  Generated template for the ProductCreatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="winered">
+    <ion-title>New Product</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only padding-right (click)="saveProduct(productForm)">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<form #productForm="ngForm">
+		<button ion-button (click)="selectPhoto()" type="button" block>Upload Photo</button>
+		<ion-row responsive-sm>
+			<!-- Product Name -->
+			<ion-item>
+				<ion-label floating color="primary">Name</ion-label>
+				<ion-input [(ngModel)]="product.name"  name="name" type="text" #name="ngModel" spellcheck="false" autocapitalize="off"
+					required>
+				</ion-input>
+			</ion-item>
+			<p ion-text [hidden]="name.valid || submitted == false" color="danger" padding-left>				Product Name is required
+			</p>
+			<!-- Product Code -->
+			<ion-item>
+				<ion-label floating color="primary">Product Code</ion-label>
+				<ion-input [(ngModel)]="product.code"  name="code" type="text" #code="ngModel" spellcheck="false" autocapitalize="off"
+						required>
+				</ion-input>
+			</ion-item>
+			<p ion-text [hidden]="code.valid || submitted == false" color="danger" padding-left>				Product Code is required
+			</p>
+			<!-- HSN Code -->
+			<ion-item>
+				<ion-label floating color="primary">HSN Code</ion-label>
+				<ion-input [(ngModel)]="product.hsn_code"  name="hsn_code" type="text" #hsn_code="ngModel" spellcheck="false" autocapitalize="off"
+					required>
+				</ion-input>
+			</ion-item>
+			<p ion-text [hidden]="hsn_code.valid || submitted == false" color="danger" padding-left>				Product HSN Code is required
+			</p>
+			<!-- Product Brand -->
+			<ion-item>
+				<ion-label floating color="primary"> Brands </ion-label>
+				<ion-select [(ngModel)]="product.brandId" name="brandId" #brandId="ngModel" required>
+			      <ion-option *ngFor="let brand of brandRef$ | async" value="{{brand.$key}}">{{brand.name}}</ion-option>
+			    </ion-select>
+		    </ion-item>
+		    <p ion-text [hidden]="brandId.valid || submitted == false" color="danger" padding-left> Brand is required
+			</p>
+			<!-- In Stock Quantity -->
+			<ion-item>
+				<ion-label floating color="primary">In Stock (Quantity)</ion-label>
+				<ion-input [(ngModel)]="product.quantity"  name="quantity" type="number" #quantity="ngModel" spellcheck="false" autocapitalize="off"
+					required>
+				</ion-input>
+			</ion-item>
+			<p ion-text [hidden]="quantity.valid || submitted == false" color="danger" padding-left>				Product Quantity is required
+			</p>
+			<!-- Size and Size Type -->
+			<ion-row responsive-sm>
+				<ion-col>
+					<ion-item>
+						<ion-label floating color="primary">Size</ion-label>
+						<ion-input [(ngModel)]="product.size"  name="size" type="number" #size="ngModel" spellcheck="false" autocapitalize="off"
+							required>
+						</ion-input>
+					</ion-item>
+					<p ion-text [hidden]="size.valid || submitted == false" color="danger" padding-left> Product Size is required
+					</p>
+				</ion-col>	
+				<ion-col>
+					<ion-item>
+						<ion-label floating color="primary">Measure In</ion-label>
+						<ion-select [(ngModel)]="product.measure_in" name="measure_in" #measure="ngModel" required>
+					      <ion-option value="ml">Ml</ion-option>
+					      <ion-option value="oz">oz</ion-option>
+					      <ion-option value="pack">pack</ion-option>
+					    </ion-select>
+				    </ion-item>
+				    <p ion-text [hidden]="measure.valid || submitted == false" color="danger" padding-left> Mesurement type is required
+					</p>
+				</ion-col>
+			</ion-row>
+			<!-- Category Of Product -->
+			<ion-item>
+				<ion-label floating color="primary"> Category </ion-label>
+				<ion-select [(ngModel)]="product.categoryId" name="categoryId" #categoryId="ngModel" required>
+			      <ion-option *ngFor="let cate of categoryRef$ | async" value="{{cate.$key}}">{{cate.name}}</ion-option>
+			    </ion-select>
+		    </ion-item>
+		    <p ion-text [hidden]="categoryId.valid || submitted == false" color="danger" padding-left> Category is required
+			</p>
+			<!-- Country of Origin -->
+			<ion-item>
+				<ion-label floating color="primary"> Country of Origin </ion-label>
+				<ion-input [(ngModel)]="product.origin"  name="origin" type="text" #origin="ngModel" spellcheck="false" autocapitalize="off" required></ion-input>
+			</ion-item>
+			<p ion-text [hidden]="origin.valid || submitted == false" color="danger" padding-left>				Country Origin is required
+			</p>
+			<!-- Purchase Price of the Product -->
+			<ion-item>
+				<ion-label floating color="primary"> Purchase Price </ion-label>
+				<ion-input [(ngModel)]="product.purchase_price"  name="purchase_price" type="number" #purchase_price="ngModel" required></ion-input>
+			</ion-item>
+			<p ion-text [hidden]="purchase_price.valid || submitted == false" color="danger" padding-left> Purchase Price is required
+			</p>
+			<!-- Sales Price of the Product -->
+			<ion-item>
+				<ion-label floating color="primary"> Sales Price </ion-label>
+				<ion-input [(ngModel)]="product.sales_price"  name="sales_price" type="number" #sales_price="ngModel" required></ion-input>
+			</ion-item>
+			<p ion-text [hidden]="sales_price.valid || submitted == false" color="danger" padding-left> Sales Price is required
+			</p>
+			<!-- Select Supplier List -->
+			<ion-item>
+				<ion-label floating color="primary"> Select Supplier </ion-label>
+				<ion-select [(ngModel)]="product.supplierId" name="supplierId" #supplierId="ngModel" required>
+			      <ion-option *ngFor="let supplier of supplierRef$ | async"  value="{{supplier.$key}}">{{supplier.company_name}}</ion-option>
+			    </ion-select>
+		    </ion-item>
+		    <p ion-text [hidden]="supplierId.valid || submitted == false" color="danger" padding-left> Supplier is required
+			</p>
+		    <!-- Notes related to Product -->
+		    <ion-item>
+				<ion-label floating color="primary"> Description </ion-label>
+				<ion-textarea [(ngModel)]="product.notes"  name="notes" type="text"></ion-textarea>
+			</ion-item>
+		</ion-row>
+	</form>
+</ion-content>

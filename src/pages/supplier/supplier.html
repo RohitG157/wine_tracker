@@ -17,5 +17,14 @@
 
 
 <ion-content padding>
-
+	<ion-fab right bottom margin>
+	  <button ion-fab (click)="createSupplier()"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
+  <ion-list *ngFor="let supplier of supplierRef$ | async" color="winered"> 
+    <button ion-item color="light" (click)="editSupplier(supplier)"> 
+      <h2><strong>{{supplier.company_name}}</strong></h2>
+      <h3>{{supplier.email}}</h3>
+      <p>Code: {{supplier.code}}</p>
+    </button>
+  </ion-list>
 </ion-content>

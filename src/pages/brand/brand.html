@@ -31,18 +31,21 @@
 						Brand Name is required
 					</p>
 				</ion-col>
-				<ion-col col-4> 
+				<ion-col col-4 *ngIf="!isEdit"> 
 					<button ion-button (click)="saveBrand(brandForm)" type="submit" block style="margin-top: 30%;">Save</button>
+				</ion-col>
+				<ion-col col-4 *ngIf="isEdit"> 
+					<button ion-button (click)="updateBrand(brandForm)" type="submit" block style="margin-top: 30%;">Update</button>
 				</ion-col>
 			</ion-row>	
 		</ion-grid>
 	</form>
 	<div padding>
 		<ion-list>
-			<ion-item *ngFor="let brand of brandName" color="primary" style="margin:1px;">
+			<ion-item *ngFor="let brand of brandRef$ | async" color="primary" style="margin:1px;">
 			    {{brand.name}}
-			    <ion-icon name="create" item-end padding-right (click)="edit()"></ion-icon> 	
-			    <ion-icon name="trash" item-end (click)="delete()"></ion-icon>
+			    <ion-icon name="create" item-end padding-right (click)="edit(brand)"></ion-icon> 	
+			    <ion-icon name="trash" item-end (click)="delete(brand)"></ion-icon>
 			</ion-item>
 		</ion-list>
 	</div>

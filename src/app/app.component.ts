@@ -12,6 +12,9 @@ import { SupplierPage } from '../pages/supplier/supplier';
 import { CategoryPage } from '../pages/category/category';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
+import { ProductCreatePage } from '../pages/product-create/product-create';
+import { SupplierCreatePage } from '../pages/supplier-create/supplier-create';
+import { StaffCreatePage } from '../pages/staff-create/staff-create';
 
 export interface PageInterface {
   title: string;

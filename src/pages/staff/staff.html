@@ -17,5 +17,16 @@
 
 
 <ion-content padding>
+	<ion-fab right bottom margin>
+	  <button ion-fab (click)="addStaff()"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
+  <ion-list *ngFor="let user of userRef$ | async" color="winered"> 
+    <button ion-item color="light" (click)="editUser(user)">
+      <h2>{{user.name}}</h2>
+      <h3>{{user.username}}</h3>
+      <p> {{user.phone}} </p>
+      <p>Role: {{user.role=="bill_collector" ? "Bill Collector" : "Staff Member"}}</p>
+    </button>
+  </ion-list>
 
 </ion-content>
